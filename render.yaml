@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: arya-bot
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: OWNER_ID
+        value: "8783901855"
+      - key: FORCE_JOIN_ENABLED
+        value: "True"
+      - key: FORCE_JOIN_CHAT_ID
+        value: "-1004343483155"
+      - key: FORCE_JOIN_LINK
+        value: "https://t.me/+e56LxHnciK5lOWI1"
+      - key: MONGO_URI
+        sync: false
+      - key: RENDER_EXTERNAL_URL
+        fromService: { type: web, name: arya-bot, property: host }
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: DEBUG
+        value: "False"
